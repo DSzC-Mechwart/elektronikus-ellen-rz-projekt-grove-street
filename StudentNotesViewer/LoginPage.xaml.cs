@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace StudentNotesViewer;
 
@@ -18,7 +19,7 @@ public partial class LoginPage : Page
     private void LogIn(object sender, RoutedEventArgs e)
     {
         var username = UsernameTextBox.Text;
-        var password = UsernameTextBox.Text;
+        var password = PasswordTextBox.Text;
         var student = MainWindow.Students.Find(x => x.Name.Equals(username, StringComparison.OrdinalIgnoreCase) && x.Password == password);
 
         if (student == null)
@@ -29,5 +30,10 @@ public partial class LoginPage : Page
         }
 
         MainWindow.Instance.Frame.NavigationService.Navigate(new OverviewPage(student));
+    }
+
+    private void TextBoxMouseEnter(object sender, MouseEventArgs e)
+    {
+        ((TextBox)sender).Focus();
     }
 }

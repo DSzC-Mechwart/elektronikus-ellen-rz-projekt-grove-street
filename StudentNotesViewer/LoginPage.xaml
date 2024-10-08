@@ -89,15 +89,6 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#3E3E3E"/>
@@ -126,17 +117,11 @@
             <Border Background="#1C1C1C" CornerRadius="20" Padding="20" VerticalAlignment="Stretch">
                 <StackPanel>
                     <Label Content="Username"/>
-                    <TextBox Name="UsernameTextBox" MaxLines="1" HorizontalAlignment="Stretch" MinHeight="50" TextChanged="OnTextInputChanged"/>
-                    <Label/>
-                    <Label/>
-                    <Label/>
-                    <Label/>
+                    <TextBox Name="UsernameTextBox" MaxLines="1" HorizontalAlignment="Stretch" FontSize="30" MouseEnter="TextBoxMouseEnter" TextChanged="OnTextInputChanged"/>
+                    <Label/><Label/><Label/><Label/>
                     <Label Content="Password"/>
-                    <TextBox Name="PasswordTextBox" MaxLines="1" HorizontalAlignment="Stretch" MinHeight="50" TextChanged="OnTextInputChanged"/>
-                    <Label/>
-                    <Label/>
-                    <Label/>
-                    <Label/>
+                    <TextBox Name="PasswordTextBox" MaxLines="1" HorizontalAlignment="Stretch" FontSize="30" MouseEnter="TextBoxMouseEnter" TextChanged="OnTextInputChanged"/>
+                    <Label/><Label/><Label/><Label/>
                     <Button Name="LoginButton" Content="Log In" VerticalAlignment="Bottom" IsEnabled="False" Click="LogIn">
                         <Button.RenderTransform>
                             <ScaleTransform/>

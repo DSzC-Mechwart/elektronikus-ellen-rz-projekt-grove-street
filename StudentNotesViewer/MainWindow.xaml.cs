@@ -52,12 +52,7 @@ public partial class MainWindow
                 password += Random.Next(10).ToString();
             }
 
-            var student = new Student(name, password)
-            {
-                Grades = subjects.ToDictionary(x => x, _ => new List<Grade>())
-            };
-            
-            dummyStudents.Add(student);
+            dummyStudents.Add(new(name, password, subjects.Distinct().ToDictionary(x => x, _ => new List<Grade>())));
         }
 
         var json = JsonSerializer.Serialize(dummyStudents);
@@ -68,5 +63,9 @@ public partial class MainWindow
     {
         var json = File.ReadAllText(Path, Encoding.UTF8);
         Students = JsonSerializer.Deserialize<List<Student>>(json) ?? throw new JsonException("Failed to import dummy students, JSON deserialization failed in MainWindow.cs at ImportStudentsFromFile() method");
+        foreach (var student in Students)
+        {
+            Console.WriteLine($"Name: {student.Name}, Password: {student.Password}, Subjects: {string.Join(", ", student.Grades.Keys)}");
+        }
     }
 }
