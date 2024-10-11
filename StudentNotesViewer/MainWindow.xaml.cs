@@ -32,7 +32,7 @@ public partial class MainWindow
     private void CreateDummyData()
     {
         List<Student> dummyStudents = [];
-        string[] dummyNames = ["Bíró Marcell", "Lovász Dominik", "Molnár Roland", "Csesznok Attila", "Csarnai Zsombor", "Bakk Levente", "Pelei Attila", "Kéri Balázs", "Seres Péter"];
+        string[] dummyNames = ["Biro Marcell", "Lovasz Dominik", "Molnar Roland", "Csesznok Attila", "Csarnai Zsombor", "Bakk Levente", "Pelei Attila", "Keri Balazs", "Seres Peter"];
         var allSubjects = Enum.GetValues<Subject>();
 
         foreach (var name in dummyNames)

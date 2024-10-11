@@ -11,6 +11,6 @@
             <ImageBrush ImageSource="bg.jpg"/>
         </Grid.Background>
         
-        <Frame Name="Frame" NavigationUIVisibility="Hidden"></Frame>
+        <Frame Name="Frame" NavigationUIVisibility="Hidden" Margin="0" Padding="0"/>
     </Grid>
 </Window>

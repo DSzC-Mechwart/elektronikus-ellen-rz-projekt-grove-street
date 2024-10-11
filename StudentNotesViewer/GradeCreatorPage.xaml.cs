@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace StudentNotesViewer;
 
-public partial class GradeCreatorPage : Page
+public partial class GradeCreatorPage
 {
     private readonly List<Grade> Grades;
 
@@ -27,5 +27,7 @@ public partial class GradeCreatorPage : Page
         var type = Enum.Parse<GradeType>((TypeComboBox.SelectedItem.ToString() ?? string.Empty).Replace(" ", ""));
         var value = (byte)(GradeComboBox.SelectedIndex + 1);
         Grades.Add(new(description, type, value));
+        GradesListPage.Instance.Refresh();
+        MainWindow.Instance.Frame.NavigationService.GoBack();
     }
 }

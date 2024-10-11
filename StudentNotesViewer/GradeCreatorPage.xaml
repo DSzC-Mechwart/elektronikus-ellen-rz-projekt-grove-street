@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
-      Title="Grade Creator Page" Height="720" Width="1280" FontSize="20" Background="Transparent">
+      Title="Grade Creator Page" Height="680" Width="1260" FontSize="20" Background="Transparent">
     
     <Page.Resources>
         <Style TargetType="Button">

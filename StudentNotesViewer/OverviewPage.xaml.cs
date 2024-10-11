@@ -8,8 +8,11 @@ public partial class OverviewPage
 {
     private readonly Student CurrentStudent;
     
+    public static OverviewPage Instance = null!;
+    
     public OverviewPage(Student student)
     {
+        Instance = this;
         CurrentStudent = student;
         InitializeComponent();
         SetupGradesOverview();
@@ -25,7 +28,7 @@ public partial class OverviewPage
             {
                 Background = new SolidColorBrush(Color.FromRgb(28, 28, 28)),
                 CornerRadius = new(20),
-                Padding = new(10),
+                Padding = new(0),
                 Child = new StackPanel
                 {
                     Orientation = Orientation.Horizontal,
@@ -39,7 +42,9 @@ public partial class OverviewPage
                         },
                         new Label
                         {
-                            Content = grades.Count == 0 ? "-" : Math.Round(grades.Average(x => x.Value), 2)
+                            Content = grades.Count == 0 ? "-" : Math.Round(grades.Average(x => x.Value), 2),
+                            Background = grades.Count > 0 && grades.Average(x => x.Value) <= 1.75 ? new(Colors.Red) : new SolidColorBrush(Colors.Transparent),
+                            Foreground = grades.Count > 0 && grades.Average(x => x.Value) <= 1.75 ? new(Colors.Black) : new SolidColorBrush(Colors.LightGray)
                         },
                         new Label
                         {
@@ -48,22 +53,27 @@ public partial class OverviewPage
                         new Button
                         {
                             RenderTransform = new ScaleTransform(),
-                            Content = "View Grades",
-                            Tag = $"ViewGradeButton-{subject}"
+                            Content = "View Grades"
                         }
                     }
                 }
             };
             Grid.SetRow(border, MainGrid.RowDefinitions.Count - 1);
             var button = ((StackPanel)border.Child).Children.OfType<Button>().First();
-            button.Click += (_, _) => ViewGradesButtonClick(button);
+            button.Click += (_, _) => ViewGradesButtonClick(subject, grades);
             MainGrid.Children.Add(border);
         }
     }
 
-    private void ViewGradesButtonClick(Button button)
+    private void ViewGradesButtonClick(Subject subject, List<Grade> grades)
     {
-        var subject = Enum.Parse<Subject>(button.Tag.ToString()!.Split('-')[1]);
-        MainWindow.Instance.Frame.NavigationService.Navigate(new GradesListPage(subject, CurrentStudent.Grades[subject]));
+        MainWindow.Instance.Frame.NavigationService.Navigate(new GradesListPage(subject, grades));
+    }
+    
+    public void Refresh()
+    {
+        MainGrid.Children.Clear();
+        MainGrid.RowDefinitions.Clear();
+        SetupGradesOverview();
     }
 }

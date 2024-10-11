@@ -9,6 +9,7 @@ public partial class LoginPage : Page
     public LoginPage()
     {
         InitializeComponent();
+        UsernameTextBox.Focus();
     }
 
     private void OnTextInputChanged(object sender, TextChangedEventArgs e)
@@ -35,5 +36,13 @@ public partial class LoginPage : Page
     private void TextBoxMouseEnter(object sender, MouseEventArgs e)
     {
         ((TextBox)sender).Focus();
+    }
+
+    private void KeyPressed(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter && LoginButton.IsEnabled)
+        {
+            LogIn(sender, e);
+        }
     }
 }
