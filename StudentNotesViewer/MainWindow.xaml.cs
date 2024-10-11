@@ -23,13 +23,13 @@ public partial class MainWindow
     public MainWindow()
     {
         Instance = this;
-        CreateDummyData();
+        // CreateDummyData();
         ImportStudentsFromFile();
         InitializeComponent();
         Frame.NavigationService.Navigate(new LoginPage());
     }
 
-    void CreateDummyData()
+    private void CreateDummyData()
     {
         List<Student> dummyStudents = [];
         string[] dummyNames = ["Bíró Marcell", "Lovász Dominik", "Molnár Roland", "Csesznok Attila", "Csarnai Zsombor", "Bakk Levente", "Pelei Attila", "Kéri Balázs", "Seres Péter"];
@@ -59,7 +59,7 @@ public partial class MainWindow
         File.WriteAllText(Path, json, Encoding.UTF8);
     }
 
-    void ImportStudentsFromFile()
+    private void ImportStudentsFromFile()
     {
         var json = File.ReadAllText(Path, Encoding.UTF8);
         Students = JsonSerializer.Deserialize<List<Student>>(json) ?? throw new JsonException("Failed to import dummy students, JSON deserialization failed in MainWindow.cs at ImportStudentsFromFile() method");

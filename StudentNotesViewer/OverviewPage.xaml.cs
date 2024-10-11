@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace StudentNotesViewer;
 
-public partial class OverviewPage : Page
+public partial class OverviewPage
 {
     private readonly Student CurrentStudent;
     
@@ -15,7 +15,7 @@ public partial class OverviewPage : Page
         SetupGradesOverview();
     }
 
-    void SetupGradesOverview()
+    private void SetupGradesOverview()
     {
         foreach ((Subject subject, List<Grade> grades) in CurrentStudent.Grades)
         {

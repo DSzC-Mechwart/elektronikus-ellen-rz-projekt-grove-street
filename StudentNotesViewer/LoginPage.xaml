@@ -108,12 +108,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch">
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Border Background="#1C1C1C" CornerRadius="20" Padding="20" VerticalAlignment="Stretch">
                 <StackPanel>
                     <Label Content="Username"/>

@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace StudentNotesViewer;
 
-public partial class GradesListPage : Page
+public partial class GradesListPage
 {
     private Subject CurrentSubject;
     private List<Grade> Grades;
@@ -16,7 +16,7 @@ public partial class GradesListPage : Page
         InitializeGradesListBox();
     }
 
-    void InitializeGradesListBox()
+    private void InitializeGradesListBox()
     {
         foreach (var grade in Grades)
         {
@@ -39,5 +39,10 @@ public partial class GradesListPage : Page
                 }
             });
         }
+    }
+
+    private void NewGrade(object sender, RoutedEventArgs e)
+    {
+        MainWindow.Instance.Frame.NavigationService.Navigate(new GradeCreatorPage(Grades));
     }
 }
