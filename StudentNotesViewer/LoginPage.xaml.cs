@@ -6,8 +6,10 @@ namespace StudentNotesViewer;
 
 public partial class LoginPage : Page
 {
+    public static LoginPage Instance = null!;
     public LoginPage()
     {
+        Instance = this;
         InitializeComponent();
         UsernameTextBox.Focus();
     }
