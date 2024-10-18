@@ -27,6 +27,7 @@ public partial class MainWindow
         ImportStudentsFromFile();
         InitializeComponent();
         Frame.NavigationService.Navigate(new LoginPage());
+        Closing += (_, _) => SaveData();
     }
 
     private void CreateDummyData()
@@ -67,5 +68,11 @@ public partial class MainWindow
         {
             Console.WriteLine($"Name: {student.Name}, Password: {student.Password}, Subjects: {string.Join(", ", student.Grades.Keys)}");
         }
+    }
+
+    private static void SaveData()
+    {
+        var json = JsonSerializer.Serialize(Students);
+        File.WriteAllText(Path, json, Encoding.UTF8);
     }
 }

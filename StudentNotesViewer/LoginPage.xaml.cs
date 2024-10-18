@@ -47,4 +47,9 @@ public partial class LoginPage : Page
             LogIn(sender, e);
         }
     }
+
+    private void OpenAdminView(object sender, RoutedEventArgs e)
+    {
+        MainWindow.Instance.Frame.NavigationService.Navigate(new AdminView());
+    }
 }
