@@ -47,7 +47,7 @@
             </Style.Triggers>
         </Style>
         
-        <Style TargetType="Label">
+        <Style TargetType="Label" x:Key="WhiteLabel">
             <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="FontFamily" Value="Segoe UI"/>
@@ -218,7 +218,7 @@
                         <ScaleTransform />
                     </Button.RenderTransform>
                 </Button>
-                <Label Grid.Column="2" Name="InfoLabel"></Label>
+                <Label Grid.Column="2" Name="InfoLabel" Style="{StaticResource WhiteLabel}"/>
             </Grid>
             <ListBox Name="GradesListBox" Margin="5,0,5,5"/>
         </StackPanel>
